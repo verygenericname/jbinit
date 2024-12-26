@@ -23,6 +23,7 @@ struct hook_info info[] = {
     { "/usr/sbin/cfprefsd", cfprefsdInit, NULL, NULL },
     { "/Applications/PineBoard.app/PineBoard", NULL, NULL, pineboardInit },
     { "/Applications/HeadBoard.app/HeadBoard", NULL, NULL, headboardInit },
+    { "/usr/sbin/BlueTool", NULL, NULL, bluetoolInit },
 };
 
 bool stringEndsWith(const char* str, const char* suffix)
@@ -63,5 +64,9 @@ __attribute__((constructor))void universalhooks_main(void) {
     
     if (stringEndsWith(path, "/TrollStore.app/trollstorehelper")) {
         trollstorehelperInit(path);
+    }
+    
+    if (stringEndsWith(path, "/Camera.app/Camera")) {
+        cameraInit();
     }
 }

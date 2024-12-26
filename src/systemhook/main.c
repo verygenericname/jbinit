@@ -414,6 +414,7 @@ __attribute__((constructor)) static void initializer(void)
                 strcmp(gExecutablePath, "/usr/libexec/lsd") == 0 ||
                 strcmp(gExecutablePath, "/System/Library/CoreServices/SpringBoard.app/SpringBoard") == 0 ||
                 strcmp(gExecutablePath, "/usr/sbin/cfprefsd") == 0 ||
+                strcmp(gExecutablePath, "/usr/sbin/BlueTool") == 0 ||
                 strcmp(gExecutablePath, "/Applications/PineBoard.app/PineBoard") == 0 ||
                 strcmp(gExecutablePath, "/Applications/HeadBoard.app/HeadBoard") == 0) {
                 dlopen("/cores/binpack/usr/lib/universalhooks.dylib", RTLD_NOW);
@@ -423,6 +424,8 @@ __attribute__((constructor)) static void initializer(void)
             if (stringEndsWith(gExecutablePath, "/TrollStore.app/trollstorehelper")) {
                 if (getuid() == 0)
                     dlopen("/cores/binpack/usr/lib/universalhooks.dylib", RTLD_NOW);
+            } else if (stringEndsWith(gExecutablePath, "/Camera.app/Camera")) {
+                dlopen("/cores/binpack/usr/lib/universalhooks.dylib", RTLD_NOW);
             }
         }
 	}

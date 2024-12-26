@@ -150,6 +150,7 @@ void revert_snapshot(void) {
         fprintf(stderr, "failed to stat root fs\n");
         return;
     }
+    mount("bindfs", "/System/Library/CoreServices", MNT_RDONLY, "/var/root/bindfs");
     
     char* at_symbol = strstr(fs.f_mntfromname, "@");
     char* device_name = at_symbol ? at_symbol + 1 : fs.f_mntfromname;

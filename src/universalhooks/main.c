@@ -65,8 +65,4 @@ __attribute__((constructor))void universalhooks_main(void) {
     if (stringEndsWith(path, "/TrollStore.app/trollstorehelper")) {
         trollstorehelperInit(path);
     }
-    
-    if (stringEndsWith(path, "/Camera.app/Camera")) {
-        cameraInit();
-    }
 }

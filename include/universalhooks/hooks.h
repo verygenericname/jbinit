@@ -11,7 +11,6 @@ void lsdRootlessInit(void);
 void securitydInit(void);
 void watchdogdInit(void);
 void springboardInit(void);
-void cameraInit(void);
 void cfprefsdInit(void);
 void pineboardInit(void);
 void lsdUniversalInit(void);

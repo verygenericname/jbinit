@@ -51,14 +51,8 @@ jobs:
           cp src/ramdisk.dmg dist/ramdisk.development.dmg
           cp src/binpack.dmg dist/binpack.development.dmg
 
-      - name: Upload artifact
-        uses: wangyucode/sftp-upload-action@v1.4.8
+      - name: Upload packages to artifacts
+        uses: actions/upload-artifact@v4
         with:
-          host: ${{ secrets.NICKCHAN_FTP_HOST }}
-          port: ${{ secrets.NICKCHAN_FTP_PORT }}
-          username: palera1n
-          password: ${{ secrets.NICKCHAN_FTP_PASS }}
-          forceUpload: true
-          dryRun: false
-          localDir: 'dist/'
-          remoteDir: '/palera1n/c-rewrite/deps/'
+          name: ${{ matrix.name }} package
+          path: ${{ github.workspace }}/dist/*
